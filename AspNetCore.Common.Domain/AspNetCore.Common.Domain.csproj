@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.DynamicLinq" Version="7.3.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetCore.Common.Data\AspNetCore.Common.Data.csproj" />
+    <ProjectReference Include="..\AspNetCore.Common.Models\AspNetCore.Common.Models.csproj" />
+  </ItemGroup>
+
+</Project>
