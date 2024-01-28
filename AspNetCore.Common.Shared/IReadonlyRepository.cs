@@ -1,4 +1,5 @@
-﻿using AspNetCore.Common.Shared.Models;
+﻿
+using AspNetCore.Common.Shared.Models;
 
 namespace AspNetCore.Common.Shared
 {
@@ -7,7 +8,7 @@ namespace AspNetCore.Common.Shared
     {
         Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 
-        Task<IReadOnlyList<TEntity>> GetListAsync(
+        Task<PageResult<TEntity>> GetListAsync(
             int page,
             int pageSize,
             IReadOnlyList<Filter>? filters,

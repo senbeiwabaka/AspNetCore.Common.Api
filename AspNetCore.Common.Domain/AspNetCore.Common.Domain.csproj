@@ -15,4 +15,8 @@
     <ProjectReference Include="..\AspNetCore.Common.Models\AspNetCore.Common.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

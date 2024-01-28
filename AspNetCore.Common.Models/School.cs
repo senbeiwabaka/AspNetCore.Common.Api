@@ -6,6 +6,8 @@ namespace AspNetCore.Common.Models
     {
         public string Name { get; set; } = default!;
 
-        public Address? Address { get; set; }
+        public bool IsUsed { get; set; }
+
+        public Guid? AddressId { get; set; }
     }
 }

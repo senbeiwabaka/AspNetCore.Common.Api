@@ -14,7 +14,7 @@
 
         public DateTime DateOfBirth { get; set; }
 
-        public Address? Address { get; set; }
+        public Guid? AddressId { get; set; }
 
         public DateTime Created { get; set; }
 

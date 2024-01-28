@@ -6,35 +6,18 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AspNetCore.Common.Domain.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Line1 = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    Line2 = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
-                    State = table.Column<string>(type: "text", nullable: false),
-                    City = table.Column<string>(type: "text", nullable: false),
-                    Zip = table.Column<string>(type: "text", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Schools",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    IsUsed = table.Column<bool>(type: "boolean", nullable: false),
                     AddressId = table.Column<Guid>(type: "uuid", nullable: true),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
@@ -42,11 +25,6 @@ namespace AspNetCore.Common.Domain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Schools", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Schools_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -66,22 +44,7 @@ namespace AspNetCore.Common.Domain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "Id");
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Schools_AddressId",
-                table: "Schools",
-                column: "AddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_AddressId",
-                table: "Users",
-                column: "AddressId");
         }
 
         /// <inheritdoc />
@@ -92,9 +55,6 @@ namespace AspNetCore.Common.Domain.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Addresses");
         }
     }
 }

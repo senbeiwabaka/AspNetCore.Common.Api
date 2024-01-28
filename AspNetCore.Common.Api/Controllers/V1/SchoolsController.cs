@@ -1,6 +1,7 @@
 ﻿using AspNetCore.Common.Api.Validations.V1;
 using AspNetCore.Common.Domain;
 using AspNetCore.Common.Models;
+using AspNetCore.Common.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Common.Api.Controllers.V1
@@ -37,7 +38,7 @@ namespace AspNetCore.Common.Api.Controllers.V1
         [HttpGet("gets/{page}/{pageSize}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IReadOnlyList<School>>> GetList(
+        public async Task<ActionResult<PageResult<School>>> GetList(
             int page,
             int pageSize,
             [FromQuery] RequestModel request,

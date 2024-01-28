@@ -1,5 +1,5 @@
-﻿using AspNetCore.Common.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using AspNetCore.Common.Models;
 
 namespace AspNetCore.Common.Data
 {
@@ -9,8 +9,6 @@ namespace AspNetCore.Common.Data
             : base(options)
         {
         }
-
-        public DbSet<Address> Addresses { get; set; }
 
         public DbSet<School> Schools { get; set; }
 

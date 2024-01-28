@@ -15,6 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Common.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Common.Api.Tests", "tests\AspNetCore.Common.Api.Tests\AspNetCore.Common.Api.Tests.csproj", "{44419CBA-C75A-41DF-8389-5C0F76894920}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{62D4F99E-5FE7-4AF7-8069-2BA4B7F51FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Common.Domain.Tests", "tests\AspNetCore.Common.Domain.Tests\AspNetCore.Common.Domain.Tests.csproj", "{6555502E-1392-4EE1-8785-019386B4328A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{609D3835-1FD5-46F3-B430-AA7715762945}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +54,17 @@ Global
 		{44419CBA-C75A-41DF-8389-5C0F76894920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44419CBA-C75A-41DF-8389-5C0F76894920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44419CBA-C75A-41DF-8389-5C0F76894920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6555502E-1392-4EE1-8785-019386B4328A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6555502E-1392-4EE1-8785-019386B4328A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6555502E-1392-4EE1-8785-019386B4328A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6555502E-1392-4EE1-8785-019386B4328A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44419CBA-C75A-41DF-8389-5C0F76894920} = {62D4F99E-5FE7-4AF7-8069-2BA4B7F51FDA}
+		{6555502E-1392-4EE1-8785-019386B4328A} = {62D4F99E-5FE7-4AF7-8069-2BA4B7F51FDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1F32380-B16E-41C8-9BCD-5CAD767F25E4}

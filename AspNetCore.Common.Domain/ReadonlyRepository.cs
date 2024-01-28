@@ -1,10 +1,10 @@
-﻿using System.Linq.Dynamic.Core;
-using System.Reflection;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using AspNetCore.Common.Data;
+﻿using AspNetCore.Common.Data;
 using AspNetCore.Common.Shared;
 using AspNetCore.Common.Shared.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
+using System.Reflection;
+using System.Text;
 
 namespace AspNetCore.Common.Domain
 {
@@ -28,7 +28,7 @@ namespace AspNetCore.Common.Domain
             return Context.Set<TEntity>().SingleOrDefaultAsync(x => x.Id == id, cancellationToken: cancellationToken);
         }
 
-        public virtual async Task<IReadOnlyList<TEntity>> GetListAsync(
+        public virtual async Task<PageResult<TEntity>> GetListAsync(
             int page,
             int pageSize,
             IReadOnlyList<Filter>? filters,
@@ -46,6 +46,8 @@ namespace AspNetCore.Common.Domain
                     query = query.Where($"{item.Property}{GetEvaluationType(item.Property, item.FilterType, i)}", item.Value);
                 }
             }
+
+            var count = await query.CountAsync(cancellationToken).ConfigureAwait(false);
 
             if (sorting is not null && sorting.Any())
             {
@@ -70,7 +72,13 @@ namespace AspNetCore.Common.Domain
 
             query = query.Skip(page * pageSize).Take(pageSize);
 
-            return await query.ToListAsync(cancellationToken).ConfigureAwait(false);
+            var data = await query.ToListAsync(cancellationToken).ConfigureAwait(false);
+
+            return new PageResult<TEntity>
+            {
+                Items = data,
+                TotalCount = count,
+            };
         }
 
         protected virtual string GetEvaluationType(string property, FilterType filterType, int index)
